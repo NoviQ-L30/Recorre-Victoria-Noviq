@@ -25,6 +25,9 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
+.env
+.env.*
+!.env.example
 .env*.local
 
 # vercel
@@ -37,3 +40,4 @@ next-env.d.ts
 package-lock.json
 pnpm-lock.yaml
 yarn.lock
+/src/generated/prisma

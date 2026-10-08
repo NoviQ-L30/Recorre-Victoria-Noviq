@@ -8,7 +8,7 @@ import { NewComment } from "@/components/new-comment";
 
 export function Comments() {
   return (
-    <section className="w-full max-w-6xl mx-auto flex flex-col px-5 pb-20">
+    <section className="absolute top-[4600px] left-[180px] w-full max-w-6xl mx-auto flex flex-col px-5 pb-20">
       {/* Título de sección */}
       <Typography
         variant="h4"

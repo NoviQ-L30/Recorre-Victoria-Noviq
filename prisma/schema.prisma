@@ -1,0 +1,149 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  ADMIN
+  USER
+}
+
+model Usuario {
+  id          Int          @id @default(autoincrement())
+  nombre      String
+  email       String       @unique
+  password    String
+  role        Role         @default(USER)
+  activo      Boolean      @default(true)
+  createdAt   DateTime     @default(now())
+
+  comentarios Comentario[]
+}
+
+model Noticia {
+  id          Int          @id @default(autoincrement())
+  titulo      String
+  contenido   String
+  imagen      String?
+  publicada   Boolean      @default(false)
+  createdAt   DateTime     @default(now())
+
+  categoriaId Int?
+  categoria   Categoria?   @relation(fields: [categoriaId], references: [id])
+
+  comentarios Comentario[]
+}
+
+model Categoria {
+  id       Int       @id @default(autoincrement())
+  nombre   String    @unique
+  noticias Noticia[]
+}
+
+model Comentario {
+  id         Int      @id @default(autoincrement())
+  contenido  String
+  likes      Int      @default(0)
+  aprobado   Boolean  @default(false)
+  createdAt  DateTime @default(now())
+
+  usuarioId  Int
+  usuario    Usuario  @relation(fields: [usuarioId], references: [id])
+
+  noticiaId  Int
+  noticia    Noticia  @relation(fields: [noticiaId], references: [id])
+}
+
+model DatoCurioso {
+  id      Int     @id @default(autoincrement())
+  texto   String
+  imagen  String?
+  activo  Boolean @default(true)
+  orden   Int?
+}
+
+model Colonia {
+  id          Int       @id @default(autoincrement())
+  nombre      String
+  descripcion String?
+  coordenadas Json
+  color       String?
+  activa      Boolean   @default(true)
+
+  imagenes    Imagen[]
+}
+
+model Imagen {
+  id        Int      @id @default(autoincrement())
+  url       String
+  titulo    String?
+  orden     Int?
+  activa    Boolean  @default(true)
+
+  coloniaId Int?
+  colonia   Colonia? @relation(fields: [coloniaId], references: [id])
+}
+
+model MenuItem {
+  id      Int     @id @default(autoincrement())
+  nombre  String
+  ruta    String
+  icono   String?
+  orden   Int?
+  visible Boolean @default(true)
+}
+
+model FooterLink {
+  id        Int    @id @default(autoincrement())
+  categoria String
+  texto     String
+  url       String
+  orden     Int?
+}
+
+model SiteConfig {
+  id    Int    @id @default(autoincrement())
+  clave String @unique
+  valor String
+}
+
+model CarouselImage {
+  id        Int      @id @default(autoincrement())   // 🔑 PK
+  url       String
+  titulo    String?
+  orden     Int
+  activa    Boolean  @default(true)
+  createdAt DateTime @default(now())
+}
+
+model Carousel3DImage {
+  id         String  @id @default(uuid())
+  name       String
+  imageUrl   String
+  imageId    String  // <- este es el public_id
+}
+
+model SecondaryCarouselImage {
+  id        String   @id @default(uuid())
+  name      String
+  imageUrl  String
+  imageId   String   // public_id de Cloudinary
+  order     Int      // para controlar orden manual
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model CuriousFact {
+  id        String   @id @default(uuid())
+  title     String   @default("¿Sabías qué?")
+  text      String   @db.Text
+  imageUrl  String?
+  imageId   String?
+  order     Int
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

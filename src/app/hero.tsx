@@ -1,15 +1,19 @@
 "use client";
 
 import { IconButton, Typography } from "@material-tailwind/react";
+import WeatherWidget from "@/components/WeatherWidget";
 
 function Hero() {
   return (
-    <div className="relative min-h-screen w-full bg-[url('/image/FONDO-GOD.jpg')] bg-cover bg-no-repeat">
+    <div className="relative min-h-screen w-full bg-[url('/image/FONDO-GOD.jpg')] bg-cover bg-no-repeat z-[80]">
       {/* Fondo oscuro superpuesto */}
-      <div className="absolute inset-0 h-full w-full bg-gray-900/75" />
+      <div className="absolute inset-0 h-full w-full bg-gray-900/75 z-10" />
+
+      {/* Widget del clima */}
+      <WeatherWidget />
 
       {/* Contenido principal */}
-      <div className="grid min-h-screen px-8 relative z-10">
+      <div className="grid min-h-screen px-8 relative z-20">
         <div className="container relative z-10 my-auto mx-auto grid place-items-center text-center">
           {/* Título principal */}
           <Typography
@@ -26,7 +30,7 @@ function Hero() {
             color="white"
             className="mt-4 mb-12 w-full text-lg md:max-w-full lg:max-w-3xl lg:text-xl"
           >
-            Bienvenido a la página oficial de la ciudad de Victoria, Tamaulipas.
+            Bienvenido a la página oficial de ciudad de Victoria, Tamaulipas.
             Descubre todo lo que esta ciudad tiene para ofrecerte
           </Typography>
 

@@ -41,7 +41,7 @@ interface Comment {
 const initialComments: Comment[] = [
   {
     id: 1,
-    img: "/image/avatar1.jpg",
+    img: "/image/avatar3.jpg",
     name: "Maria Pérez",
     desc: "Me parece increíble cómo este proyecto ha logrado captar la atención de tantas personas en tan poco tiempo. Cada detalle está cuidadosamente trabajado y se nota el esfuerzo que hay detrás de cada decisión. Felicidades a todo el equipo por crear un espacio tan inspirador y lleno de contenido de calidad. ¡Sigan adelante, este solo es el comienzo de algo aún más grande!",
     createdAt: "2025-04-10T14:00:00Z",
@@ -50,7 +50,7 @@ const initialComments: Comment[] = [
   },
   {
     id: 2,
-    img: "/image/avatar2.jpg",
+    img: "/image/avatar3.jpg",
     name: "José Martínez",
     desc: "La verdad es que no suelo dejar comentarios, pero en esta ocasión sentí la necesidad de hacerlo. La manera en la que han organizado todo el contenido facilita muchísimo la navegación y hace que uno se quede explorando durante horas. Se agradece que aún existan proyectos que piensan tanto en la experiencia del usuario. ¡Mucho éxito en lo que viene!",
     createdAt: "2025-04-28T16:30:00Z",

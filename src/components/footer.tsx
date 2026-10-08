@@ -19,41 +19,40 @@ const CURRENT_YEAR = new Date().getFullYear();
 
 export function Footer() {
   return (
-    <footer className="mt-10 px-8 pt-20">
-      <div className="container mx-auto">
-        <div className="grid grid-cols-1 justify-between gap-4 md:grid-cols-2">
-          <Typography
-            as="a"
-            href="https://www.material-tailwind.com"
-            target="_blank"
-            variant="h4"
-            className="mb-6"
-          >
-            Únete a nuestra comunidad
-          </Typography>
-          <div className="grid grid-cols-3 justify-between gap-4">
+    <footer className="mt-0 w-full bg-[#FEE0C8] px-6 pt-16 pb-10 sm:px-8 lg:px-16">
+      <div className="max-w-[1400px] mx-auto">
+
+        {/* PARTE SUPERIOR */}
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
+
+          {/* TITULO */}
+          <div>
+            <Typography
+              as="a"
+              href="https://www.material-tailwind.com"
+              target="_blank"
+              variant="h4"
+              className="mb-6"
+            >
+              Únete a nuestra comunidad
+            </Typography>
+          </div>
+
+          {/* LINKS */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
             {LINKS.map(({ title, items }) => (
               <ul key={title}>
-                <Typography
-                  variant="h6"
-                  color="blue-gray"
-                  className="mb-4"
-                  placeholder=""
-                  onPointerEnterCapture={() => {}}
-                  onPointerLeaveCapture={() => {}}
-                >
+                <Typography variant="h6" className="mb-4">
                   {title}
                 </Typography>
+
                 {items.map((link) => (
                   <li key={link}>
                     <Typography
                       as="a"
                       href="#"
                       variant="small"
-                      className="py-1 font-normal !text-gray-700 transition-colors hover:!text-gray-900"
-                      placeholder=""
-                      onPointerEnterCapture={() => {}}
-                      onPointerLeaveCapture={() => {}}
+                      className="block py-1 font-normal text-gray-700 hover:text-gray-900 transition-colors"
                     >
                       {link}
                     </Typography>
@@ -63,43 +62,25 @@ export function Footer() {
             ))}
           </div>
         </div>
-        <div className="mt-16 flex flex-wrap items-end justify-center gap-y-4 gap-x-8 border-t border-blue-gray-50 py-6 md:justify-between">
-          <div className="text-center md:text-start">
-            <Typography
-              variant="h4"
-              color="blue-gray"
-              className="mb-2"
-              placeholder=""
-              onPointerEnterCapture={() => {}}
-              onPointerLeaveCapture={() => {}}
-            >
+
+        {/* PARTE INFERIOR */}
+        <div className="mt-16 border-t border-black/10 pt-8 flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+
+          <div className="max-w-[600px]">
+            <Typography variant="h5" className="mb-2">
               El camino hacia los sueños se construye con 3 grandes pilares:
             </Typography>
-            <Typography
-              className="font-normal !text-gray-700"
-              placeholder=""
-              onPointerEnterCapture={() => {}}
-              onPointerLeaveCapture={() => {}}
-            >
+            <Typography className="text-gray-700">
               Esfuerzo constante, dedicación inquebrantable y la firme decisión
               de nunca rendirse.
             </Typography>
           </div>
-          <Typography
-            color="gray"
-            className="text-center font-normal !text-gray-700"
-          >
-            &copy; {CURRENT_YEAR}{" "}
-            <a href="https://www.material-tailwind.com" target="_blank">
-              Pagina hecha con tailwind
-            </a>{" "}
-            por{" "}
-            <a href="" target="_blank">
-              Noviq_L30
-            </a>
-            .
+
+          <Typography className="text-gray-700 text-center md:text-right">
+            &copy; {CURRENT_YEAR} Pagina hecha con tailwind por Noviq_L30.
           </Typography>
         </div>
+
       </div>
     </footer>
   );
